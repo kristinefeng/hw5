@@ -236,7 +236,7 @@ Format: one section per problem, each with the problem number and title, at leas
 
 ## Problem 11 — Submit to GitHub
 
-- **Status:** In progress.
+- **Status:** Complete. Pushed to https://github.com/kristinefeng/hw5
 - **Prompt typed:**
 
   > okay, problem 11: submit to GitHub
@@ -249,7 +249,13 @@ Format: one section per problem, each with the problem number and title, at leas
   >
   > The README shoudl explain: copy original DB to the working copy wen you need a clean run, start MCP server, start FastAPI backend, start the React board, reset the DB before a full three-ticket run
 
-- **Follow-up prompts:** _(none yet)_
+- **Follow-up prompt:**
+
+  > heres the repo link https://github.com/kristinefeng/hw5
+  >
+  > i think i turned the readme on by accident. can you fix the settings to be exactly what we need/as required by the assignment
+
+  What was lacking after the first prompt: the vibe coder can't create GitHub repos from this machine, so I had to create it myself. I gave it the URL, and because the repo started with GitHub's auto-generated README, the vibe coder had to merge that starter commit (keeping the project README) before pushing.
 
 ---
 
