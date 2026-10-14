@@ -147,7 +147,7 @@ No tool writes to `payments`, `cash_accounts`, `inventory`, or `pricing`, so no 
 `backend/main.py` (FastAPI). Start it from `backend/` with `uvicorn main:app --reload --port 8000`.
 
 - `GET /tickets`: every ticket with its status, plus `state` (open or resolved), whether the team is working on it right now, and its latest run (with the boss's decision and any approval cards).
-- `POST /tickets/{ticket_id}/run`: starts the agent team on that ticket in the background and returns a `run_id` right away. When the run finishes, the ticket is marked resolved, and the boss's recommendation and approvals stay on the run (saved in `output/runs.json`).
+- `POST /tickets/{ticket_id}/run`: starts the agent team on that ticket in the background and returns a `run_id` right away. When the run finishes, the ticket is marked resolved, and the boss's recommendation and approvals stay on the run (the backend saves them to `output/runs.json` at runtime, so pending approvals survive a reload; that file isn't committed).
 - `GET /runs/{run_id}`: whether that run is still going, done, stopped, or failed, and, once done, the boss's decision with the approvals it needs.
 - `GET /events?limit=&ticket_id=&run_id=&after=`: recent agent events from the audit trail, covering what each agent said, which tools it called, and who it delegated to. `after` returns only new events, so the board can refresh cheaply.
 - `POST /payments/approve`: a human approves an invoice, rent, or purchase payment. This is the only route that changes cash. It checks the payment against the records first, and marks the run's approval card as signed.

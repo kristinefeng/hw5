@@ -18,3 +18,9 @@ frontend/dist/
 *.unreadable-*
 .DS_Store
 *.zip
+
+# Runtime and working files kept out of the submission layout
+output/runs.json
+output/board_shots/
+folder_joke.txt
+frontend/.env.example

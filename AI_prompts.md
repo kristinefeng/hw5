@@ -257,6 +257,12 @@ Format: one section per problem, each with the problem number and title, at leas
 
   What was lacking after the first prompt: the vibe coder can't create GitHub repos from this machine, so I had to create it myself. I gave it the URL, and because the repo started with GitHub's auto-generated README, the vibe coder had to merge that starter commit (keeping the project README) before pushing.
 
+- **Follow-up prompt:**
+
+  > you can take out any extra items that aren't in th e screenshot formatting included above
+
+  What was lacking after the push: the repo had a few files that weren't in the assignment's layout (run records, source screenshots, a frontend env example, and the setup joke). They were removed from the repo and git-ignored. The backend's extra code files were kept, because the app needs them to run.
+
 ---
 
 _Sections will be appended for each remaining problem as we work through the assignment._
