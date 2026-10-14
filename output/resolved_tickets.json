@@ -1,0 +1,238 @@
+{
+  "generated_from": [
+    "output/runs.json",
+    "output/audit_trail.json",
+    "data/campus_customs_new.db"
+  ],
+  "starting_checking_balance": 3400.0,
+  "ending_checking_balance": 2560.0,
+  "tickets": [
+    {
+      "id": 101,
+      "final_status": "resolved",
+      "boss_recommendation": "needs_approval",
+      "run_id": "125410c5df3c",
+      "outcome": "Size S is out of stock (0); M 5, L 3, and XL 2 are available. The size-S reprint depends on invoice 501. The owner paid invoice 501 ($840), and a draft reply offers Tauhid an in-stock size. No size-S date is promised.",
+      "cash_change": -840.0,
+      "agents": {
+        "boss": {
+          "asked_by": [],
+          "delegated_to": [
+            "inventory",
+            "accounting",
+            "customer_service"
+          ],
+          "tools_used": [
+            "get_today",
+            "get_ticket",
+            "update_ticket"
+          ],
+          "report": "Tauhid requested one CC-TEE-WHITE tee in size S, but none are on hand. Sizes M (5), L (3), and XL (2) are available, and no substitution has been made. The linked reprint invoice 501 is open, unpaid, and $840 overdue by 3 days as of 2026-08-31; the vendor's 5-day lead time does not confirm when the tee will arrive. Recommend owner approval to pay the invoice and approve sending the customer a message asking whether they want an available size."
+        },
+        "inventory": {
+          "asked_by": [
+            "boss",
+            "accounting"
+          ],
+          "delegated_to": [],
+          "tools_used": [
+            "get_ticket",
+            "check_stock",
+            "get_invoice",
+            "get_today",
+            "check_all_sizes"
+          ],
+          "report": "Invoice 501 for the CC-TEE-WHITE size S rush reprint is open and 3 days past due, so the reprint is uncertain and the vendor may be holding the work. No explicit hold or hold reason is recorded; the invoice description is \u201cRush reprint CC-TEE-WHITE S.\u201d"
+        },
+        "accounting": {
+          "asked_by": [
+            "boss"
+          ],
+          "delegated_to": [
+            "inventory"
+          ],
+          "tools_used": [
+            "get_invoice",
+            "list_payments",
+            "get_ticket",
+            "get_today"
+          ],
+          "report": "Invoice 501 is payable to Bulldog Print Co for $840, due 2026-08-28 and 3 days overdue as of 2026-08-31. It remains open, with no payment recorded; because it covers ticket 101\u2019s rush reprint, recommend owner-approved payment promptly, but the records do not confirm the vendor has actually held the reprint."
+        },
+        "customer_service": {
+          "asked_by": [
+            "boss"
+          ],
+          "delegated_to": [],
+          "tools_used": [
+            "get_ticket"
+          ],
+          "report": "Tauhid Zaman requested one CC-TEE-WHITE tee in size S, which is unavailable. We can offer M (5), L (3), or XL (2) instead, at the customer\u2019s choice; no restock date is confirmed."
+        }
+      },
+      "agents_not_called": [
+        "facilities"
+      ],
+      "human_approvals": [
+        {
+          "kind": "payment",
+          "description": "Approve payment of the overdue $840 invoice balance to Bulldog Print Co, linked to the reprint for ticket 101.",
+          "amount": 840.0,
+          "reference": "invoice 501",
+          "payee": "Bulldog Print Co",
+          "human_decision": "Approved and paid by Kristine Feng (payment #1); checking 3400.00 -> 2560.00"
+        },
+        {
+          "kind": "customer_message",
+          "description": "Approve sending the drafted reply to Tauhid Zaman asking whether they want size M, L, or XL instead of unavailable size S.",
+          "amount": null,
+          "reference": "ticket 101",
+          "payee": null,
+          "human_decision": "Not signed: left for the owner; no money moved"
+        }
+      ],
+      "customer_reply_draft": "Hi Tauhid, thanks for asking about one CC-TEE-WHITE tee in size S. We don\u2019t have size S available right now. We do have M, L, and XL\u2014would you like one of those instead? Let us know your preferred size, and we\u2019ll take it from there."
+    },
+    {
+      "id": 102,
+      "final_status": "resolved",
+      "boss_recommendation": "waiting_on_customer",
+      "run_id": "d3637cee1ee9",
+      "outcome": "The rent notice matches lease 1 (Elm City Properties, $2,400, due 2026-09-02) on sender and timing, but the email states no amount. The boss held payment until the landlord confirms. No cheque was prepared, so rent is not yet paid.",
+      "cash_change": 0.0,
+      "agents": {
+        "boss": {
+          "asked_by": [],
+          "delegated_to": [
+            "facilities",
+            "accounting"
+          ],
+          "tools_used": [
+            "get_today",
+            "get_ticket",
+            "update_ticket"
+          ],
+          "report": "The rent notice is from the lease's landlord and its due timing matches: $2,400 monthly rent is due 2026-09-02 under lease 1. However, the notice omits the amount, so facilities could not fully verify it; do not authorize payment until the landlord confirms the amount. Accounting reports $2,560 cash and no rent payment recorded; paying $2,400 would leave $160, below the $500 cushion."
+        },
+        "facilities": {
+          "asked_by": [
+            "boss"
+          ],
+          "delegated_to": [],
+          "tools_used": [
+            "get_ticket",
+            "get_lease",
+            "get_today",
+            "list_payments"
+          ],
+          "report": "Can't fully verify the notice: requester and timing match lease 1, but the email gives no amount to compare. Lease 1 is for Chapel Street shop, $2,400 monthly rent payable to Elm City Properties, next due 2026-09-02 (2 days from the shop date, 2026-08-31)."
+        },
+        "accounting": {
+          "asked_by": [
+            "boss"
+          ],
+          "delegated_to": [],
+          "tools_used": [
+            "get_cash_balance",
+            "list_open_invoices",
+            "list_leases",
+            "get_lease",
+            "list_payments",
+            "get_today"
+          ],
+          "report": "As of 2026-08-31, cash is $2,560, enough to cover the $2,400 lease rent due in two days, leaving $160. The lease record confirms $2,400; no rent payment for lease 1 is recorded, and the rent is not yet overdue. Paying it would leave checking below the $500 cushion, though above $0."
+        }
+      },
+      "agents_not_called": [
+        "inventory",
+        "customer_service"
+      ],
+      "human_approvals": [],
+      "customer_reply_draft": null
+    },
+    {
+      "id": 103,
+      "final_status": "resolved",
+      "boss_recommendation": "needs_approval",
+      "run_id": "72aa84337708",
+      "outcome": "Only 8 of 20 size-M hoodies are on hand (short 12, and no restock date is confirmed). Up to 15% off on the 8 available ($49.30 each, $69.60 total) is within policy and waits for the owner's approval, along with the draft reply. No cash moved.",
+      "cash_change": 0.0,
+      "agents": {
+        "boss": {
+          "asked_by": [],
+          "delegated_to": [
+            "accounting",
+            "inventory",
+            "customer_service"
+          ],
+          "tools_used": [
+            "get_today",
+            "get_ticket",
+            "update_ticket"
+          ],
+          "report": "Yale AI Club asked for 20 navy hoodies in size M with a bulk discount. Only 8 are on hand; the remaining 12 are not confirmed for restock, so no delivery date can be promised. List price is $58 each and unit cost is $22. Recommend asking the club whether it wants the 8 available now, to wait while printer timing is confirmed, or to consider other sizes. Up to 15% off the 8 available units ($69.60 total discount; $49.30 each if approved) is within policy but requires owner approval. No price has been changed and no customer message has been sent."
+        },
+        "accounting": {
+          "asked_by": [
+            "boss"
+          ],
+          "delegated_to": [
+            "inventory"
+          ],
+          "tools_used": [
+            "get_ticket",
+            "get_pricing"
+          ],
+          "report": "CC-HOOD-NAVY size M costs $22.00 per unit, lists at $58.00, and has a $36.00 per-unit margin at list. The 20-unit order qualifies for up to 15% off list only on units actually available; inventory shows only 8 in size M, so the discount policy currently applies to at most those 8 units, and no price has been changed."
+        },
+        "inventory": {
+          "asked_by": [
+            "boss",
+            "accounting"
+          ],
+          "delegated_to": [],
+          "tools_used": [
+            "get_ticket",
+            "get_today",
+            "check_stock",
+            "check_all_sizes",
+            "list_vendors"
+          ],
+          "report": "Ticket 103 requests 20 CC-HOOD-NAVY hoodies in size M; 8 are on hand in Aisle A, so the exact-size supply is short by 12. Other sizes are available, but no size substitutions have been made; the ticket is a bulk-discount request, and inventory records do not address discount eligibility."
+        },
+        "customer_service": {
+          "asked_by": [
+            "boss"
+          ],
+          "delegated_to": [],
+          "tools_used": [
+            "get_ticket"
+          ],
+          "report": "Yale AI Club requests 20 navy hoodies in size M and a bulk discount. Eight M are available now; the remaining 12 are not in stock, and any printer timing is unconfirmed. List price is $58 each; the possible bulk discount on the eight currently supplyable units requires owner approval."
+        }
+      },
+      "agents_not_called": [
+        "facilities"
+      ],
+      "human_approvals": [
+        {
+          "kind": "customer_message",
+          "description": "Approve sending the drafted reply asking Yale AI Club whether it wants the 8 available now, to wait while restock timing is confirmed, or to consider other sizes.",
+          "amount": null,
+          "reference": "ticket 103",
+          "payee": null,
+          "human_decision": "Not signed: left for the owner; no money moved"
+        },
+        {
+          "kind": "discount",
+          "description": "Approve a discount of up to 15% on the 8 currently available size-M hoodies: $69.60 total discount, or $49.30 each. No discount has been applied.",
+          "amount": 69.6,
+          "reference": "ticket 103",
+          "payee": null,
+          "human_decision": "Not signed: left for the owner; no money moved"
+        }
+      ],
+      "customer_reply_draft": "Hi Yale AI Club, thanks for reaching out about 20 navy hoodies in size M. We have 8 available now at the $58 list price each. We\u2019re confirming timing with our printer for the other 12, so we can\u2019t confirm a restock date yet. The owner is reviewing your bulk-discount request; up to 15% off could apply to the 8 available now, if approved ($49.30 each). Would you prefer the 8 now while we confirm the restock timing, wait for an update on all 20, or consider other sizes? We\u2019ll follow up once you choose and we have timing confirmed."
+    }
+  ]
+}

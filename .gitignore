@@ -1,0 +1,20 @@
+# Secrets: never commit real keys. Copy .env.example to .env and fill it in.
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node / Vite
+node_modules/
+frontend/dist/
+
+# Scratch and OS files
+*.tmp
+*.resetting
+*.unreadable-*
+.DS_Store
+*.zip
